@@ -1,0 +1,27 @@
+{% extends "Layout.html" %} {% block content %}
+<h1>Days</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Day</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in days %} {% if item['id'] != '' %}
+        <tr>
+            <th scope="row">{{ item['id'] }}</th>
+            <td>{{ item['name'] }}</td>
+            <td>
+                <a href="/app/day/{{ item['id'] }}/exercises">Manage Exercises</a> | <a href="/app/day/{{ item['id'] }}/edit">Change Day's Name</a> | <a class="deleteBtn" data-path="days" data-resource="days" data-value="{{ item['id'] }}" href="#">Delete</a>
+            </td>
+        </tr>
+        {% endif %} {% endfor %}
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-primary" onClick="window.location.replace('/app/day/add');">+ Add Day</button>
+
+<div id="error_msg"></div>
+{% endblock %}

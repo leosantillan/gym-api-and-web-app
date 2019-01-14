@@ -1,0 +1,31 @@
+{% extends "Layout.html" %} {% block content %}
+<h1>Plan - Users</h1>
+<form class="form-horizontal" id="form_edit">
+    <input type="hidden" id="id" value="">
+    <input type="hidden" id="id_plan" name="id_plan" value="{{ planuser['plan'][0]['id'] }}">
+    <input type="hidden" id="resource" value="user_plan">
+    <input type="hidden" id="returnUrl" value="plan/{{ planuser['plan'][0]['id'] }}/users">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name">Plan:</label>
+        <div class="alert alert-success" role="alert">
+            <b>{{ planuser['plan'][0]['name'] }}</b>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Assign to user:</label>
+        <select class="form-control" name="id_user" id="id_user">
+            <option value="">Choose...</option>
+            {% for item in planuser['users'] %}
+                <option value="{{ item['id'] }}">{{ item['user'] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" onClick="window.location.replace('/app/plans');">< Back to Plans</button></Back>
+        </div>
+    </div>
+</form>
+<p><span id="error_msg" class="text-danger"></span></p>
+{% endblock %}

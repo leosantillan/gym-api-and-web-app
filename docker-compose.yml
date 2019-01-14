@@ -1,0 +1,30 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: virtua-gym
+    ports:
+      - 8080:80
+    volumes:
+      - .:/srv/app
+    links:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: virtuagym
+      DB_USERNAME: vgym
+      DB_PASSWORD: vgym.pass
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_DATABASE: virtuagym
+      MYSQL_USER: vgym
+      MYSQL_PASSWORD: vgym.pass
+      MYSQL_ROOT_PASSWORD: root.pass
+    volumes:
+      - ./build/performance.cnf:/etc/mysql/conf.d/performance.cnf
+      - ./data:/var/lib/mysql

@@ -1,0 +1,31 @@
+{% extends "Layout.html" %} {% block content %}
+<h1>Users</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in users %} {% if item['id'] != '' %}
+        <tr>
+            <th scope="row">{{ item['id'] }}</th>
+            <td>{{ item['firstname'] }}</td>
+            <td>{{ item['lastname'] }}</td>
+            <td>{{ item['email'] }}</td>
+            <td>
+                <a href="/app/user/{{ item['id'] }}/edit">Edit</a> | <a class="deleteBtn" data-path="users" data-resource="users" data-value="{{ item['id'] }}" href="#">Delete</a>
+            </td>
+        </tr>
+        {% endif %} {% endfor %}
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-primary" onClick="window.location.replace('/app/user/add');">+ Add User</button>
+
+<div id="error_msg"></div>
+{% endblock %}

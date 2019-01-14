@@ -1,0 +1,300 @@
+###########
+# WEB APP #
+###########
+
+home:
+    path: /
+    defaults: { _controller: VirtuaGym\Controllers\HomepageController::index }
+    methods:
+        - GET
+
+# USERS
+app_users:
+    path: /app/users
+    defaults: { _controller: VirtuaGym\Controllers\AppUserController::list }
+    methods:
+        - GET
+app_user_edit:
+    path: /app/user/{id}/edit
+    defaults: { _controller: VirtuaGym\Controllers\AppUserController::form }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_user_add:
+    path: /app/user/add
+    defaults: { _controller: VirtuaGym\Controllers\AppUserController::form }
+    methods:
+        - GET
+# PLANS
+app_plans:
+    path: /app/plans
+    defaults: { _controller: VirtuaGym\Controllers\AppPlanController::list }
+    methods:
+        - GET
+app_plan_edit:
+    path: /app/plan/{id}/edit
+    defaults: { _controller: VirtuaGym\Controllers\AppPlanController::form }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_plan_add:
+    path: /app/plan/add
+    defaults: { _controller: VirtuaGym\Controllers\AppPlanController::form }
+    methods:
+        - GET
+app_plan_users:
+    path: /app/plan/{id}/users
+    defaults: { _controller: VirtuaGym\Controllers\AppPlanUserController::list }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_plan_users_add:
+    path: /app/plan/{id}/assign
+    defaults: { _controller: VirtuaGym\Controllers\AppPlanUserController::form }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_plan_days:
+    path: /app/plan/{id}/days
+    defaults: { _controller: VirtuaGym\Controllers\AppPlanDayController::list }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_plan_days_add:
+    path: /app/plan/{id}/assign_day
+    defaults: { _controller: VirtuaGym\Controllers\AppPlanDayController::form }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+# DAYS
+app_days:
+    path: /app/days
+    defaults: { _controller: VirtuaGym\Controllers\AppDayController::list }
+    methods:
+        - GET
+app_day_edit:
+    path: /app/day/{id}/edit
+    defaults: { _controller: VirtuaGym\Controllers\AppDayController::form }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_day_add:
+    path: /app/day/add
+    defaults: { _controller: VirtuaGym\Controllers\AppDayController::form }
+    methods:
+        - GET
+app_day_users:
+    path: /app/day/{id}/exercises
+    defaults: { _controller: VirtuaGym\Controllers\AppDayExerciseController::list }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_day_exercises_add:
+    path: /app/day/{id}/assign
+    defaults: { _controller: VirtuaGym\Controllers\AppDayExerciseController::form }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+# EXERCISES
+app_exercises:
+    path: /app/exercises
+    defaults: { _controller: VirtuaGym\Controllers\AppExerciseController::list }
+    methods:
+        - GET
+app_exercise_edit:
+    path: /app/exercise/{id}/edit
+    defaults: { _controller: VirtuaGym\Controllers\AppExerciseController::form }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+app_exercise_add:
+    path: /app/exercise/add
+    defaults: { _controller: VirtuaGym\Controllers\AppExerciseController::form }
+    methods:
+        - GET
+
+############
+# REST API #
+############
+
+# USERS
+users_all:
+    path: /users
+    defaults: { _controller: VirtuaGym\Controllers\UserController::index }
+    methods:
+        - GET
+users_one:
+    path: /users/{id}
+    defaults: { _controller: VirtuaGym\Controllers\UserController::show }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+add_user:
+    path: /users
+    defaults: { _controller: VirtuaGym\Controllers\UserController::store }
+    methods:
+        - POST
+update_user:
+    path: /users/{id}
+    defaults: { _controller: VirtuaGym\Controllers\UserController::update }
+    requirements:
+        id: '\d+'
+    methods:
+        - PUT
+        - PATCH
+delete_user:
+    path: /users/{id}
+    defaults: { _controller: VirtuaGym\Controllers\UserController::delete }
+    requirements:
+        id: '\d+'
+    methods:
+        - DELETE
+# PLANS
+plans_all:
+    path: /plans
+    defaults: { _controller: VirtuaGym\Controllers\PlanController::index }
+    methods:
+        - GET
+plans_one:
+    path: /plans/{id}
+    defaults: { _controller: VirtuaGym\Controllers\PlanController::show }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+add_plan:
+    path: /plans
+    defaults: { _controller: VirtuaGym\Controllers\PlanController::store }
+    methods:
+        - POST
+update_plan:
+    path: /plans/{id}
+    defaults: { _controller: VirtuaGym\Controllers\PlanController::update }
+    requirements:
+        id: '\d+'
+    methods:
+        - PUT
+        - PATCH
+delete_plan:
+    path: /plans/{id}
+    defaults: { _controller: VirtuaGym\Controllers\PlanController::delete }
+    requirements:
+        id: '\d+'
+    methods:
+        - DELETE
+# DAYS
+days_all:
+    path: /days
+    defaults: { _controller: VirtuaGym\Controllers\DayController::index }
+    methods:
+        - GET
+days_one:
+    path: /days/{id}
+    defaults: { _controller: VirtuaGym\Controllers\DayController::show }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+add_day:
+    path: /days
+    defaults: { _controller: VirtuaGym\Controllers\DayController::store }
+    methods:
+        - POST
+update_day:
+    path: /days/{id}
+    defaults: { _controller: VirtuaGym\Controllers\DayController::update }
+    requirements:
+        id: '\d+'
+    methods:
+        - PUT
+        - PATCH
+delete_day:
+    path: /days/{id}
+    defaults: { _controller: VirtuaGym\Controllers\ExerciseController::delete }
+    requirements:
+        id: '\d+'
+    methods:
+        - DELETE
+# EXERCISES
+exercises_all:
+    path: /exercises
+    defaults: { _controller: VirtuaGym\Controllers\ExerciseController::index }
+    methods:
+        - GET
+exercises_one:
+    path: /exercises/{id}
+    defaults: { _controller: VirtuaGym\Controllers\ExerciseController::show }
+    requirements:
+        id: '\d+'
+    methods:
+        - GET
+add_exercise:
+    path: /exercises
+    defaults: { _controller: VirtuaGym\Controllers\ExerciseController::store }
+    methods:
+        - POST
+update_exercise:
+    path: /exercises/{id}
+    defaults: { _controller: VirtuaGym\Controllers\ExerciseController::update }
+    requirements:
+        id: '\d+'
+    methods:
+        - PUT
+        - PATCH
+delete_exercise:
+    path: /exercises/{id}
+    defaults: { _controller: VirtuaGym\Controllers\ExerciseController::delete }
+    requirements:
+        id: '\d+'
+    methods:
+        - DELETE
+# USER-PLAN
+assign_plan:
+    path: /user_plan
+    defaults: { _controller: VirtuaGym\Controllers\UserPlanController::store }
+    methods:
+        - POST
+delete_assign:
+    path: /user_plan/{id}
+    defaults: { _controller: VirtuaGym\Controllers\UserPlanController::delete }
+    requirements:
+        id: '\d+'
+    methods:
+        - DELETE
+# PLAN-DAYS
+assign_plan_day:
+    path: /plan_day
+    defaults: { _controller: VirtuaGym\Controllers\PlanDayController::store }
+    methods:
+        - POST
+delete_plan_day_assign:
+    path: /plan_day/{id}
+    defaults: { _controller: VirtuaGym\Controllers\PlanDayController::delete }
+    requirements:
+        id: '\d+'
+    methods:
+        - DELETE
+# DAY-EXERCISE
+assign_day:
+    path: /day_exercise
+    defaults: { _controller: VirtuaGym\Controllers\DayExerciseController::store }
+    methods:
+        - POST
+delete_day_assign:
+    path: /day_exercise/{id}
+    defaults: { _controller: VirtuaGym\Controllers\DayExerciseController::delete }
+    requirements:
+        id: '\d+'
+    methods:
+        - DELETE
