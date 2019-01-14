@@ -1,6 +1,6 @@
-#Gym API and Web App
+# Gym API and Web App
 
-##Installation
+## Installation
 ````
 * Clone this repository
 * Run composer update
@@ -10,7 +10,7 @@
 * Go to http://localhost:8080
 ````
 
-##Notes
+## Notes
 
 * No PHP framework
 * Use of Jquery & Bootstrap
